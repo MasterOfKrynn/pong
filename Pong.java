@@ -19,15 +19,16 @@ public class Pong extends JApplet
 		Timer t = new Timer(20, e -> {canvas.repaint();} );t.start();	
 	}
 
-	class PaintSurface extends JComponent
+	class PaintSurface extends JComponent implements KeyListener
 	{
+		boolean go = false;
 		boolean directionIsRight = true;
 		boolean directionIsUp = true;
 		int speed = 4;
 		int paddle1Y = 200;
 		int paddle2Y = 200;
-		int ballX = 450;
-		int ballY = 250;
+		int ballX = 225;
+		int ballY = 200;
 		
 		public void paint(Graphics g) 
 		{
@@ -60,23 +61,47 @@ public class Pong extends JApplet
 //			}			
 			
 			//Moving the Ball
-			if(directionIsRight)
+			if(go)
 			{
-				ballX += speed;
+				if(directionIsRight)
+				{
+					ballX += speed;
+				}
+				else
+				{
+					ballX -= speed;
+				}
+			
+				if(directionIsUp)
+				{
+					ballY += speed;
+				}
+				else
+				{
+					ballY -= speed;
+				}
 			}
-			else
+		}
+
+		@Override
+		public void keyPressed(KeyEvent key) 
+		{
+			if(key.getSource() = "1")
 			{
-				ballX -= speed;
+			
 			}
-		
-			if(directionIsUp)
-			{
-				ballY += speed;
-			}
-			else
-			{
-				ballY -= speed;
-			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent key) 
+		{
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent key) 
+		{
+			
 		}
 	}
 
