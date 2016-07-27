@@ -21,7 +21,6 @@ public class Pong extends JApplet
 
 	class PaintSurface extends JComponent implements KeyListener
 	{
-		boolean go = false;
 		boolean directionIsRight = true;
 		boolean directionIsUp = true;
 		int speed = 4;
@@ -47,48 +46,64 @@ public class Pong extends JApplet
 			g2D.setPaint(Color.BLACK);
 			g2D.fill(paddle1Image);
 			g2D.fill(paddle2Image);
-			g2D.fill(ballImage);
-		
-			//Controls
-//			public void KeyPressed(KeyEvent key)
-//			{
-//			
-//			
-//			
-//			
-//			
-//			
-//			}			
+			g2D.fill(ballImage);		
 			
 			//Moving the Ball
-			if(go)
+			if(directionIsRight == true)
 			{
-				if(directionIsRight)
-				{
-					ballX += speed;
-				}
-				else
-				{
-					ballX -= speed;
-				}
+				ballX += speed;
+			}
+			else
+			{
+				ballX -= speed;
+			}
 			
-				if(directionIsUp)
-				{
-					ballY += speed;
-				}
-				else
-				{
-					ballY -= speed;
-				}
+			if(directionIsUp)
+			{
+				ballY += speed;
+			}
+			else
+			{
+				ballY -= speed;
 			}
 		}
 
+		//Controls
 		@Override
 		public void keyPressed(KeyEvent key) 
 		{
-			if(key.getSource() = "1")
+			//Player1
+			switch(key.getKeyChar())
 			{
-			
+				case('w'):
+					paddle2Y += speed;
+					break;
+				case('s'):
+					paddle2Y += speed;
+					break;
+				case('a'):
+					paddle2Y += speed;
+					break;
+				case('d'):
+					paddle2Y += speed;
+					break;	
+			}
+
+			//Player2
+			switch(key.getKeyChar())
+			{
+				case(KeyEvent.VK_UP):
+					paddle2Y += speed;
+					break;
+				case(KeyEvent.VK_DOWN):
+					paddle2Y += speed;
+					break;
+				case(KeyEvent.VK_LEFT):
+					paddle2Y += speed;
+					break;
+				case(KeyEvent.VK_RIGHT):
+					paddle2Y += speed;
+					break;	
 			}
 		}
 
@@ -104,23 +119,4 @@ public class Pong extends JApplet
 			
 		}
 	}
-
-//	void ketPressed(KeyEvent key)
-//	{
-//		
-		
-		
-		
-		
-		
-		
-//		if(key.getSource() == "w")
-//		{
-//			paddle1Y++;
-//		}
-	
-	
-	
-	
-//	}
 }
